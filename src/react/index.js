@@ -1,5 +1,5 @@
 module.exports = {
   withWorld: require("./withWorld"),
-  WorldProvider: require("./WorldProvider"),
-  WorldConsumer: require("./WorldConsumer")
+  WorldProvider: require("./Provider"),
+  WorldConsumer: require("./Context")
 };

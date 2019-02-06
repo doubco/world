@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import displayName from "../../../utils/browser/displayName";
+import displayName from "./displayName";
 import { WorldConsumer } from "./Context";
 
 const withWorld = options => {

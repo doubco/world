@@ -1,7 +1,12 @@
 {
   "name": "world-i18n",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight internationalization library for JS.",
+  "react": {
+    "main": "lib/react/index.js",
+    "commonjs": "lib/react/index.cjs.js",
+    "module": "lib/react/index.es.js"
+  },
   "main": "lib/index.js",
   "commonjs": "lib/index.cjs.js",
   "module": "lib/index.es.js",
@@ -29,6 +34,7 @@
     "@babel/plugin-proposal-class-properties": "^7.3.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
     "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.13.0",
     "eslint-plugin-import": "^2.16.0",
