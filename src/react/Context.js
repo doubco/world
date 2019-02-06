@@ -1,4 +1,5 @@
 import React from "react";
-const Context = React.createContext();
 
-export const WorldConsumer = Context.Consumer;
+const WorldContext = React.createContext();
+
+export default WorldContext;

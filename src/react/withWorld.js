@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import displayName from "./displayName";
-import { WorldConsumer } from "./Context";
+import Context from "./Context";
 
 const withWorld = options => {
   return ComposedComponent => {
@@ -10,7 +10,7 @@ const withWorld = options => {
     class C extends Component {
       render() {
         return (
-          <WorldConsumer>
+          <Context.Consumer>
             {({ world }) => {
               return (
                 <ComposedComponent
@@ -21,7 +21,7 @@ const withWorld = options => {
                 />
               );
             }}
-          </WorldConsumer>
+          </Context.Consumer>
         );
       }
     }

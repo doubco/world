@@ -89,6 +89,7 @@ class World {
   }
 
   createContext(locale) {
+    // eslint-disable-next-line
     return new Promise(resolve => {
       this.setLocale(locale, () => {
         resolve({
