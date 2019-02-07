@@ -1,6 +1,6 @@
 # World 🌎
 
-Lightweight internationalization library for JS with React Library.
+Lightweight internationalization library for `browser`, `nodejs`, `react` and `nextjs`.
 
 ## Install
 
@@ -158,7 +158,7 @@ export default class MyApp extends App {
       pageProps = await Component.getInitialProps(ctx);
     }
 
-    const worldContext = await World.createContext(locale);
+    const worldContext = await WorldInstance.createContext(locale);
 
     return { pageProps, worldContext };
   }
