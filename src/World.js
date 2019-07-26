@@ -130,8 +130,18 @@ class World {
   }
 
   t(key = "", options = {}, locale = this.locale || this.fallbackLocale) {
-    let phrases = this.translations[locale];
     let phrase;
+
+    if (isObject(key)) {
+      phrase = key[locale];
+      if (!phrase) {
+        phrase = key[this.fallbackLocale];
+      }
+      return phrase ? this.parse(phrase)(options) : "";
+    }
+
+    let phrases = this.translations[locale];
+
     if (phrases) {
       phrase = phrases[key];
       // TODO: add support for other pluralization rules (arabic etc.)
@@ -142,6 +152,7 @@ class World {
         }
       }
     }
+
     if (phrase) {
       return this.parse(phrase)(options);
     } else {
