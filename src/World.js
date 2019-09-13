@@ -30,7 +30,7 @@ class World {
     return props => {
       return phrase.replace(/{{([^{}]*)}}/g, (a, b) => {
         let k = b.replace(/ /g, "");
-        let value = "-";
+        let value = "";
         let key;
         let method;
         if (k.includes(",")) {
