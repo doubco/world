@@ -35,7 +35,7 @@ class World {
         let method;
         if (k.includes(",")) {
           let [x, m] = k.split(",");
-          let v = String(props[x]);
+          let v = props[x];
           if (v && m) {
             value = v;
             method = m;
@@ -43,7 +43,7 @@ class World {
           }
         } else {
           let x = k;
-          let v = String(props[x]);
+          let v = String(props[x] || "__NOVALUE__");
           if (v) {
             value = v;
             key = x;

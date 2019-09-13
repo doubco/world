@@ -1,6 +1,6 @@
 {
   "name": "world-i18n",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Lightweight internationalization library for JS.",
   "react": {
     "main": "lib/react/index.js",
