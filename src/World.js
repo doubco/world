@@ -43,12 +43,13 @@ class World {
           }
         } else {
           let x = k;
-          let v = String(props[x] || "__NOVALUE__");
+          let v = String(props[x]);
           if (v) {
             value = v;
             key = x;
           }
         }
+
         if (this.formatter) {
           value = this.formatter({ key, value, method, locale: this.locale });
         }
