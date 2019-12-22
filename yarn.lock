@@ -2458,10 +2458,10 @@ write@^0.2.1:
   dependencies:
     mkdirp "^0.5.1"
 
-wtf-is-this@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/wtf-is-this/-/wtf-is-this-0.0.2.tgz#b245c2c754a650f69eadef9b58fa1b1fb584849c"
-  integrity sha512-2pPdwgffzNVwJFPUBfG0+GYRBZatc+J8hp90WZk926tgmLYPhs4IRI1SpN91zeJPeAIUUqjo/OqpA+623BwN5w==
+wtf-is-this@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/wtf-is-this/-/wtf-is-this-0.0.4.tgz#33692523c23a33d869e9f938b23105f1132ac572"
+  integrity sha512-0cHx+cs97/gBhbSyHwyoNZndDXZiJpel6lr+3LK5Z/lR9Io8ffGAL95G+9wR6rkcDbV6eP2pUvm/yYRQy5nXdg==
 
 "y18n@^3.2.1 || ^4.0.0":
   version "4.0.0"
