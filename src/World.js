@@ -7,7 +7,7 @@ class World {
     translations = {},
     formatter,
     onLocaleChange,
-    fetch
+    fetch,
   } = {}) {
     this.locale = locale || fallbackLocale;
     this.fallbackLocale = fallbackLocale;
@@ -27,7 +27,7 @@ class World {
   }
 
   parse(phrase) {
-    return props => {
+    return (props) => {
       return phrase.replace(/{{([^{}]*)}}/g, (a, b) => {
         let k = b.replace(/ /g, "");
         let value = "";
@@ -68,7 +68,7 @@ class World {
 
     this.translations[key] = {
       ...(this.translations[key] || {}),
-      ...translation
+      ...translation,
     };
   }
 
@@ -77,25 +77,25 @@ class World {
       ? Object.keys(this.translations)
       : [];
 
-    Object.keys(translations).forEach(key => {
+    Object.keys(translations).forEach((key) => {
       let translation = translations[key];
 
       if (!locales.includes(key)) this.locales = [...locales, key];
 
       this.translations[key] = {
         ...(this.translations[key] || {}),
-        ...translation
+        ...translation,
       };
     });
   }
 
   createContext(locale) {
     // eslint-disable-next-line
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this.setLocale(locale, () => {
         resolve({
           locale: this.locale,
-          translations: this.translations
+          translations: this.translations,
         });
       });
     });
@@ -111,7 +111,7 @@ class World {
     this.locale = locale;
 
     if (this.fetch && !this.translations[this.locale] && !dontFetch) {
-      this.fetch(this.locale).then(translation => {
+      this.fetch(this.locale).then((translation) => {
         if (translation) {
           this.registerTranslation(this.locale, translation);
         }
@@ -146,8 +146,16 @@ class World {
     if (phrases) {
       phrase = phrases[key];
       // TODO: add support for other pluralization rules (arabic etc.)
+      // plural
       if (options.count && options.count > 1) {
         let pluralKey = `${key}_plural`;
+        if (phrases[pluralKey]) {
+          phrase = phrases[pluralKey];
+        }
+      }
+      // zero
+      if (options.count === 0) {
+        let pluralKey = `${key}_zero`;
         if (phrases[pluralKey]) {
           phrase = phrases[pluralKey];
         }
