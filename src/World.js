@@ -135,10 +135,20 @@ class World {
 
     if (isObject(key)) {
       phrase = key[locale];
+
       if (!phrase) {
         phrase = key[this.fallbackLocale];
       }
-      return phrase ? this.parse(phrase)(options) : "";
+
+      if (phrase) {
+        if (isString(phrase)) {
+          return this.parse(phrase)(options);
+        } else {
+          return phrase;
+        }
+      }
+
+      return "";
     }
 
     let phrases = this.translations[locale];
