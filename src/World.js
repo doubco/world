@@ -1,4 +1,4 @@
-import { isObject, isString } from "wtf-is-this";
+import { isObject, isString } from "@doubco/wtf";
 
 class World {
   constructor({
