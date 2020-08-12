@@ -1,6 +1,6 @@
 {
-  "name": "world-i18n",
-  "version": "1.1.4",
+  "name": "@doubco/world",
+  "version": "1.1.5",
   "description": "Lightweight internationalization library for JS.",
   "react": {
     "main": "lib/react/index.js",
@@ -10,19 +10,20 @@
   "main": "lib/index.js",
   "commonjs": "lib/index.cjs.js",
   "module": "lib/index.es.js",
-  "repository": "https://github.com/doubco/world.git",
-  "author": "Doub.co  <hi@doub.co>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doubco/world.git"
+  },
+  "author": "Doub.co <hi@doub.co>",
   "license": "MIT",
   "scripts": {
-    "setup": "yarn",
-    "publish": "npm publish",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "rollup -c -w",
     "build": "rollup -c",
     "prepare": "npm run build"
   },
   "dependencies": {
-    "wtf-is-this": "^0.0.4"
+    "@doubco/wtf": "^0.0.6"
   },
   "keywords": [
     "theme",
@@ -47,5 +48,12 @@
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-url": "^2.2.0"
+  },
+  "bugs": {
+    "url": "https://github.com/doubco/world/issues"
+  },
+  "homepage": "https://github.com/doubco/world#readme",
+  "directories": {
+    "lib": "lib"
   }
 }
