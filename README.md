@@ -4,14 +4,14 @@ Lightweight internationalization library for `browser`, `nodejs`, `react` and `n
 
 ## Install
 
-`npm install world-i18n --save` or `yarn add world-i18n`
+`npm install @doubco/world --save` or `yarn add @doubco/world`
 
 ## Usage
 
 ### Simple
 
 ```js
-import { World } from "world-i18n";
+import { World } from "@doubco/world";
 
 export default new World({
   locale: "en",
@@ -23,7 +23,7 @@ export default new World({
       item_plural: "Items",
       "x-selected": "{{count}} Selected Item {{by}}",
       "x-selected_plural": "{{count}} Selected Items {{by}}",
-      yell: "Yell as {{name,uppercase}}"
+      yell: "Yell as {{name,uppercase}}",
     },
     tr: {
       hello: "Merhaba!",
@@ -31,8 +31,8 @@ export default new World({
       item_plural: "Madde",
       "x-selected": "{{by}} tarafından {{count}} Seçili",
       "x-selected_plural": "{{by}} tarafından {{count}} Seçili",
-      yell: "{{name,uppercase}} diye bağır!"
-    }
+      yell: "{{name,uppercase}} diye bağır!",
+    },
   },
   onLocaleChange: (locale, callback) => {
     // do your stuff with locale
@@ -44,7 +44,7 @@ export default new World({
     // do your stuff in here
     if (method == "uppercase") return value.toLocaleUpperCase(locale);
     return value;
-  }
+  },
 });
 ```
 
@@ -62,7 +62,7 @@ export const switchLanguage = () => {
   return __.setLocale(
     "en",
     callback /* will run after locale and onLocalChange*/,
-    dontFetch /* if true, won't trigger fetch*/
+    dontFetch /* if true, won't trigger fetch*/,
   );
 };
 ```
@@ -70,24 +70,24 @@ export const switchLanguage = () => {
 ### Fetch translations
 
 ```js
-import { World } from "world-i18n";
+import { World } from "@doubco/world";
 
 export default new World({
   locale: "en",
   defaultLocale: "en",
-  fetch: locale => {
+  fetch: (locale) => {
     // return a promise
     // translations == { en: {key:"value"}, tr: {key:"value"}}
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       fetch(url)
         .then((translations = {}) => {
           resolve(translations);
         })
-        .catch(e => {
+        .catch((e) => {
           resolve({});
         });
     });
-  }
+  },
 });
 ```
 
@@ -99,7 +99,7 @@ import WorldInstance from "./world";
 WorldInstance.registerTranslation("en", { hello: "Hello" });
 WorldInstance.registerTranslations({
   en: { hello: "Hello" },
-  tr: { hello: "Merhaba" }
+  tr: { hello: "Merhaba" },
 });
 ```
 
@@ -124,7 +124,7 @@ export default App;
 MyComponent.js
 
 ```js
-import { withWorld } from "world-i18n/lib/react";
+import { withWorld } from "@doubco/world/lib/react";
 
 class MyComponent extends React.Component {
   render() {
@@ -157,6 +157,8 @@ export default class MyApp extends App {
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
     }
+
+    const locale = "en"; // or get it from cookies.
 
     const worldContext = await WorldInstance.createContext(locale);
 
@@ -198,6 +200,5 @@ Pull requests are welcome and please submit bugs 🐛.
 ## Contact
 
 - Follow [@doubco](https://twitter.com/doubco) on Twitter
-- Follow [@doubco](http://facebook.com/doubco) on Facebook
 - Follow [@doubco](http://instagram.com/doubco) on Instagram
 - Email <mailto:hi@doub.co>
