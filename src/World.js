@@ -11,7 +11,7 @@ class World {
     fetch,
   } = {}) {
     this.initializedLocales = [];
-    this.initializedLocales = locales || [fallbackLocale];
+    this.locales = locales || [fallbackLocale];
     this.locale = locale || fallbackLocale;
     this.fallbackLocale = fallbackLocale;
     this.translations = translations;
