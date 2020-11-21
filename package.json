@@ -1,6 +1,6 @@
 {
   "name": "@doubco/world",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "Lightweight internationalization library for JS.",
   "react": {
     "main": "lib/react/index.js",
@@ -55,5 +55,9 @@
   "homepage": "https://github.com/doubco/world#readme",
   "directories": {
     "lib": "lib"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "trailingComma": "all"
   }
 }

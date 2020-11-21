@@ -3,8 +3,11 @@ import Context from "./Context";
 class WorldProvider extends Component {
   constructor(props) {
     super(props);
+
     const { instance } = this.props;
+
     this.state = { locale: instance.locale };
+
     this.instance = instance;
   }
 
@@ -13,16 +16,17 @@ class WorldProvider extends Component {
       <Context.Provider
         value={{
           world: {
-            locale: this.state.locale,
             instance: this.instance,
+            locale: this.state.locale,
             t: this.instance.t,
-            setLocale: locale => {
+            setLocale: (locale) => {
               this.instance.setLocale(locale, () => {
                 this.setState({ locale });
               });
             },
-            locales: this.instance.locales
-          }
+            locales: this.instance.locales,
+            initializedLocales: this.instance.initializedLocales,
+          },
         }}
       >
         {this.props.children}

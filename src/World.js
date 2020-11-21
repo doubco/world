@@ -3,12 +3,15 @@ import { isObject, isString } from "@doubco/wtf";
 class World {
   constructor({
     locale,
+    locales,
     fallbackLocale = "en",
     translations = {},
     formatter,
     onLocaleChange,
     fetch,
   } = {}) {
+    this.initializedLocales = [];
+    this.initializedLocales = locales || [fallbackLocale];
     this.locale = locale || fallbackLocale;
     this.fallbackLocale = fallbackLocale;
     this.translations = translations;
@@ -60,11 +63,9 @@ class World {
   }
 
   registerTranslation(key, translation) {
-    let locales = isObject(this.translations)
-      ? Object.keys(this.translations)
-      : [];
-
-    if (!locales.includes(key)) this.locales = [...locales, key];
+    if (!this.initializedLocales.includes(key)) {
+      this.initializedLocales.push(key);
+    }
 
     this.translations[key] = {
       ...(this.translations[key] || {}),
@@ -73,14 +74,12 @@ class World {
   }
 
   registerTranslations(translations) {
-    let locales = isObject(this.translations)
-      ? Object.keys(this.translations)
-      : [];
-
     Object.keys(translations).forEach((key) => {
       let translation = translations[key];
 
-      if (!locales.includes(key)) this.locales = [...locales, key];
+      if (!this.initializedLocales.includes(key)) {
+        this.initializedLocales.push(key);
+      }
 
       this.translations[key] = {
         ...(this.translations[key] || {}),
