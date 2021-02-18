@@ -143,7 +143,6 @@ class World {
         if (isArray(phrase) && phrase.length) {
           phrase = phrase.join("\n");
         }
-
         if (isString(phrase)) {
           return this.parse(phrase)(options);
         } else {
@@ -176,7 +175,15 @@ class World {
     }
 
     if (phrase) {
-      return this.parse(phrase)(options);
+      if (isArray(phrase) && phrase.length) {
+        phrase = phrase.join("\n");
+      }
+
+      if (isString(phrase)) {
+        return this.parse(phrase)(options);
+      } else {
+        return phrase;
+      }
     } else {
       return key;
     }

@@ -1,6 +1,6 @@
 {
   "name": "@doubco/world",
-  "version": "1.1.9",
+  "version": "1.1.9-1",
   "description": "Lightweight internationalization library for JS.",
   "react": {
     "main": "lib/react/index.js",
