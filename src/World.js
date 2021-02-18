@@ -1,4 +1,4 @@
-import { isObject, isString } from "@doubco/wtf";
+import { isObject, isString, isArray } from "@doubco/wtf";
 
 class World {
   constructor({
@@ -140,6 +140,10 @@ class World {
       }
 
       if (phrase) {
+        if (isArray(phrase) && phrase.length) {
+          phrase = phrase.join("\n");
+        }
+
         if (isString(phrase)) {
           return this.parse(phrase)(options);
         } else {
