@@ -669,6 +669,11 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@doubco/wtf@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@doubco/wtf/-/wtf-0.0.6.tgz#b20184dfc4e48544a425029c8a221987e135580a"
+  integrity sha512-LF0Xxj8aDL5B+8MLFYWyH0SuwKl5NNEUAxfcVvV49EWhzcP6ApXpHmSn1vmxfKDrmqUvh+88TGYU1qG7XGoWYQ==
+
 acorn-jsx@^5.0.0:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-5.0.1.tgz#32a064fd925429216a09b141102bfdd185fae40e"
@@ -2457,11 +2462,6 @@ write@^0.2.1:
   integrity sha1-X8A4KOJkzqP+kUVUdvejxWbLB1c=
   dependencies:
     mkdirp "^0.5.1"
-
-wtf-is-this@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/wtf-is-this/-/wtf-is-this-0.0.4.tgz#33692523c23a33d869e9f938b23105f1132ac572"
-  integrity sha512-0cHx+cs97/gBhbSyHwyoNZndDXZiJpel6lr+3LK5Z/lR9Io8ffGAL95G+9wR6rkcDbV6eP2pUvm/yYRQy5nXdg==
 
 "y18n@^3.2.1 || ^4.0.0":
   version "4.0.0"

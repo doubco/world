@@ -109,7 +109,7 @@ class World {
     if (!isString(locale)) locale = this.fallbackLocale;
     this.locale = locale;
 
-    if (this.fetch && !this.translations[this.locale] && !dontFetch) {
+    if (this.fetch && !dontFetch) {
       this.fetch(this.locale).then((translation) => {
         if (translation) {
           this.registerTranslation(this.locale, translation);
