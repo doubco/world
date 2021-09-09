@@ -19,9 +19,10 @@ class WorldProvider extends Component {
             instance: this.instance,
             locale: this.state.locale,
             t: this.instance.t,
-            setLocale: (locale) => {
+            setLocale: (locale, callback) => {
               this.instance.setLocale(locale, () => {
                 this.setState({ locale });
+                if (callback) callback();
               });
             },
             locales: this.instance.locales,
