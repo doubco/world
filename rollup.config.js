@@ -19,9 +19,6 @@ export default [
       typescript({
         clean: true,
         useTsconfigDeclarationDir: true,
-        tsconfigOverride: {
-          include: ["src/index.ts"],
-        },
       }),
     ],
   },
@@ -40,10 +37,26 @@ export default [
       typescript({
         clean: true,
         useTsconfigDeclarationDir: true,
-        tsconfigOverride: {
-          include: ["src/react/index.tsx"],
-        },
       }),
     ],
   },
+
+  // {
+  //   input: "./src/types/index.ts",
+  //   output: [
+  //     {
+  //       file: "lib/types/index.js",
+  //       format: "cjs",
+  //       sourcemap: true,
+  //       exports: "named",
+  //     },
+  //   ],
+  //   plugins: [
+  //     external(),
+  //     typescript({
+  //       clean: true,
+  //       useTsconfigDeclarationDir: true,
+  //     }),
+  //   ],
+  // },
 ];

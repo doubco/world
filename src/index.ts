@@ -160,11 +160,12 @@ export class World {
 
   t(
     key: TranslationKey,
-    options: TranslationOptions,
-    locale = this.locale || this.fallbackLocale,
+    options?: TranslationOptions,
+    locale?: TranslationLocale,
   ) {
     let phrase;
 
+    if (!locale) locale = this.locale || this.fallbackLocale;
     if (!key) key = "";
     if (!options) options = {};
 

@@ -1,26 +1,9 @@
 import React, { ReactChild, useContext, useState } from "react";
 import { World } from "..";
 
-import {
-  TranslationKey,
-  TranslationOptions,
-  TranslationLocale,
-} from "../types";
+import { TranslationLocale, WorldContext, WorldHook } from "../types";
 
-const Context = React.createContext({});
-
-type WorldContext = {
-  instance: World;
-  locale: TranslationLocale;
-  locales: Array<TranslationLocale>;
-  initializedLocales: Array<TranslationLocale>;
-  t: (
-    key: TranslationKey,
-    options: TranslationOptions,
-    locale?: TranslationLocale,
-  ) => string;
-  setLocale: (locale: TranslationLocale, callback: any) => void;
-};
+const Context = React.createContext<WorldContext>({} as WorldContext);
 
 export const WorldProvider = (props: {
   children: ReactChild;
@@ -44,7 +27,7 @@ export const WorldProvider = (props: {
   return <Context.Provider value={context}>{children}</Context.Provider>;
 };
 
-export const useWorld = () => {
+export const useWorld: WorldHook = () => {
   const world = useContext(Context);
   return world;
 };

@@ -14,5 +14,6 @@
     "preserveConstEnums": true,
     "target": "es5",
     "allowSyntheticDefaultImports": true
-  }
+  },
+  "include": ["src/react/index.tsx", "src/index.ts", "src/types/index.ts"]
 }
