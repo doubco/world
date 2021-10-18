@@ -1,20 +1,44 @@
+import {
+  Translation,
+  TranslationKey,
+  TranslationContext,
+  TranslationLocale,
+  Translations,
+  WorldFormatter,
+  WorldOnLocaleChange,
+  WorldFetch,
+  WorldConfig,
+  TranslationOptions,
+} from "./types";
+
 import { isObject, isString, isArray } from "@doubco/wtf";
 
-class World {
-  constructor({
-    locale,
-    locales,
-    fallbackLocale = "en",
-    translations = {},
-    formatter,
-    onLocaleChange,
-    fetch,
-  } = {}) {
+export class World {
+  initializedLocales: Array<TranslationLocale>;
+  locales: Array<TranslationLocale>;
+  locale: TranslationLocale;
+  fallbackLocale: TranslationLocale;
+  translations: Translations;
+  formatter?: WorldFormatter;
+  onLocaleChange?: WorldOnLocaleChange;
+  fetch?: WorldFetch;
+
+  constructor(config: WorldConfig) {
+    const {
+      locale,
+      locales,
+      fallbackLocale = "en",
+      translations = {},
+      formatter,
+      onLocaleChange,
+      fetch,
+    } = config;
+
     this.initializedLocales = [];
     this.locales = locales || [fallbackLocale];
     this.locale = locale || fallbackLocale;
     this.fallbackLocale = fallbackLocale;
-    this.translations = translations;
+    this.translations = translations || {};
     this.formatter = formatter;
     this.onLocaleChange = onLocaleChange;
     this.fetch = fetch;
@@ -24,13 +48,14 @@ class World {
     this.setLocale = this.setLocale.bind(this);
     this.registerTranslation = this.registerTranslation.bind(this);
     this.registerTranslations = this.registerTranslations.bind(this);
-    if (fetch) {
+
+    if (this.fetch) {
       this.fetch = this.fetch.bind(this);
     }
   }
 
-  parse(phrase) {
-    return (props) => {
+  parse(phrase: string) {
+    return (props: TranslationOptions) => {
       return phrase.replace(/{{([^{}]*)}}/g, (a, b) => {
         let k = b.replace(/ /g, "");
         let value = "";
@@ -62,18 +87,20 @@ class World {
     };
   }
 
-  registerTranslation(key, translation) {
+  registerTranslation(key: string, translation: Translation) {
     if (!this.initializedLocales.includes(key)) {
       this.initializedLocales.push(key);
     }
 
+    const previousTranslation: Translation = this.translations[key] || {};
+
     this.translations[key] = {
-      ...(this.translations[key] || {}),
+      ...previousTranslation,
       ...translation,
     };
   }
 
-  registerTranslations(translations) {
+  registerTranslations(translations: Translations) {
     Object.keys(translations).forEach((key) => {
       let translation = translations[key];
 
@@ -81,14 +108,16 @@ class World {
         this.initializedLocales.push(key);
       }
 
+      const previousTranslation: Translation = this.translations[key] || {};
+
       this.translations[key] = {
-        ...(this.translations[key] || {}),
+        ...previousTranslation,
         ...translation,
       };
     });
   }
 
-  createContext(locale) {
+  createContext(locale: string) {
     // eslint-disable-next-line
     return new Promise((resolve) => {
       this.setLocale(locale, () => {
@@ -100,12 +129,12 @@ class World {
     });
   }
 
-  registerContext(context) {
+  registerContext(context: TranslationContext) {
     this.registerTranslations(context.translations);
     this.setLocale(context.locale, null, true);
   }
 
-  setLocale(locale = this.fallbackLocale, callback, dontFetch) {
+  setLocale(locale = this.fallbackLocale, callback?: any, dontFetch?: boolean) {
     if (!isString(locale)) locale = this.fallbackLocale;
     this.locale = locale;
 
@@ -129,8 +158,15 @@ class World {
     }
   }
 
-  t(key = "", options = {}, locale = this.locale || this.fallbackLocale) {
+  t(
+    key: TranslationKey,
+    options: TranslationOptions,
+    locale = this.locale || this.fallbackLocale,
+  ) {
     let phrase;
+
+    if (!key) key = "";
+    if (!options) options = {};
 
     if (isObject(key)) {
       phrase = key[locale];
@@ -175,10 +211,6 @@ class World {
     }
 
     if (phrase) {
-      if (isArray(phrase) && phrase.length) {
-        phrase = phrase.join("\n");
-      }
-
       if (isString(phrase)) {
         return this.parse(phrase)(options);
       } else {
@@ -189,5 +221,3 @@ class World {
     }
   }
 }
-
-export default World;

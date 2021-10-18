@@ -1,15 +1,11 @@
 {
   "name": "@doubco/world",
-  "version": "1.2.2",
+  "version": "1.2.7",
   "description": "Lightweight internationalization library for JS.",
   "react": {
-    "main": "lib/react/index.js",
-    "commonjs": "lib/react/index.cjs.js",
-    "module": "lib/react/index.es.js"
+    "main": "./lib/react/index.js"
   },
-  "main": "lib/index.js",
-  "commonjs": "lib/index.cjs.js",
-  "module": "lib/index.es.js",
+  "main": "./lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/doubco/world.git"
@@ -23,31 +19,30 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@doubco/wtf": "^0.0.6"
+    "@doubco/wtf": "^1.0.1"
   },
   "keywords": [
-    "theme",
-    "styled",
-    "components",
+    "world",
+    "i18n",
     "react",
     "helper"
   ],
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-class-properties": "^7.3.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/preset-react": "^7.0.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.13.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.16.4",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-node-resolve": "^4.0.0",
-    "rollup-plugin-peer-deps-external": "^2.2.0",
-    "rollup-plugin-url": "^2.2.0"
+    "@babel/core": "^7.15.8",
+    "@babel/eslint-parser": "^7.5.4",
+    "@types/react": "^17.0.30",
+    "@typescript-eslint/parser": "^5.1.0",
+    "eslint": "8.0.1",
+    "eslint-config-next": "11.1.2",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.4.1",
+    "react": "^17.0.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "typescript": "^4.4.4"
   },
   "bugs": {
     "url": "https://github.com/doubco/world/issues"
@@ -55,9 +50,5 @@
   "homepage": "https://github.com/doubco/world#readme",
   "directories": {
     "lib": "lib"
-  },
-  "prettier": {
-    "arrowParens": "always",
-    "trailingComma": "all"
   }
 }
