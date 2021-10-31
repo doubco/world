@@ -8,7 +8,7 @@ export type TranslationLocale = string;
 
 export type WorldFormatterProps = {
   key: string;
-  value: string;
+  value: any;
   method: string;
   locale: string;
 };
